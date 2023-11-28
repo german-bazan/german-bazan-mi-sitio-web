@@ -1,3 +1,5 @@
+// nav fija
+
 document.addEventListener('DOMContentLoaded', function() {
     iniciarApp(); 
 });
@@ -24,7 +26,7 @@ function navegacionFija () {
 }
 
 function scrollNav() {
-    const enlaces = document.querySelectorAll('.enlace-navegacion');
+    const enlaces = document.querySelectorAll('.nav');
     enlaces.forEach(enlace => {
         enlace.addEventListener('click', function(e) {
             e.preventDefault();
@@ -34,3 +36,56 @@ function scrollNav() {
         });
     });
 }
+
+// nav responsive
+let menu = document.querySelector('#menu-btn');
+let navbar = document.querySelector('.navegacion');
+
+menu.onclick = () => {
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('activado');
+};
+
+window.onscroll = () => {
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('activado');
+};
+
+// slider
+$(document).ready(function () {
+    $('.slider').slick({
+        dots: false,
+        infinite: true,
+        speed: 700,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
+});
